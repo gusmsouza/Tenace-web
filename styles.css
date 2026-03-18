@@ -1,0 +1,428 @@
+/* ============================================================
+   TENACE — Shared Stylesheet
+   Website: https://tenace.fit
+   "Training for life."
+   ============================================================ */
+
+/* ── Google Fonts are loaded via <link> in each HTML file ── */
+
+/* ============================================================
+   1. CSS CUSTOM PROPERTIES (Design Tokens)
+   ============================================================ */
+:root {
+  /* Brand colours */
+  --color-primary:  #1E4D3B;  /* Forest Green — primary brand colour */
+  --color-amber:    #E8913A;  /* Amber — CTA buttons, accents */
+  --color-lime:     #A8C26E;  /* Lime Green — highlights, success states */
+  --color-bg:       #F5F0E8;  /* Creamy White — page background */
+  --color-surface:  #FFFFFF;  /* White — cards, surfaces */
+  --color-text:     #3D3D3D;  /* Soft Charcoal — body text */
+  --color-muted:    #7A7468;  /* Warm medium gray — secondary text */
+
+  /* Tinted backgrounds (for subtle section fills) */
+  --color-lime-tint:    rgba(168, 194, 110, 0.13);
+  --color-lime-border:  rgba(168, 194, 110, 0.35);
+  --color-primary-tint: rgba(30, 77, 59, 0.07);
+
+  /* Spacing scale */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+
+  /* Border radii */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 2px 16px rgba(30, 77, 59, 0.10);
+  --shadow-nav:  0 2px 12px rgba(30, 77, 59, 0.18);
+
+  /* Typography */
+  --font-base: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Layout */
+  --container-max: 1100px;
+  --container-pad: clamp(20px, 5vw, 40px);
+}
+
+/* ============================================================
+   2. CSS RESET
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* ============================================================
+   3. LAYOUT UTILITIES
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+/* ============================================================
+   4. BUTTON STYLES
+   ============================================================ */
+
+/* Primary CTA — amber background, white text */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  background-color: var(--color-amber);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: #D07B28;  /* Slightly darker amber on hover */
+  box-shadow: 0 4px 16px rgba(232, 145, 58, 0.35);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Outline variant — forest green border and text */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  background-color: transparent;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 26px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.12s ease;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  outline: none;
+}
+
+/* ============================================================
+   5. NAVIGATION
+   ============================================================ */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-nav);
+}
+
+.site-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* TENACE wordmark in the nav */
+.site-nav__logo {
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.site-nav__logo:hover {
+  opacity: 0.9;
+}
+
+/* Right-side nav actions */
+.site-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Nav CTA button — amber, but slightly smaller */
+.site-nav__cta {
+  font-size: 0.9rem;
+  padding: 10px 22px;
+}
+
+/* ============================================================
+   6. FOOTER
+   ============================================================ */
+.site-footer {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  padding: 48px var(--container-pad);
+}
+
+.site-footer__inner {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+/* Column 1 — logo + tagline */
+.site-footer__brand-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-sm);
+}
+
+.site-footer__tagline {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  font-style: italic;
+}
+
+/* Column headings */
+.site-footer__heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: var(--space-md);
+}
+
+/* Footer links */
+.site-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.site-footer__links a {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: opacity 0.15s ease;
+}
+
+.site-footer__links a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Bottom copyright bar */
+.site-footer__bottom {
+  max-width: var(--container-max);
+  margin: var(--space-xl) auto 0;
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  font-size: 0.82rem;
+  opacity: 0.65;
+}
+
+/* ============================================================
+   7. FORM ELEMENTS (shared across pages)
+   ============================================================ */
+.form-input {
+  flex: 1;
+  min-width: 0;          /* Allows shrinking inside flex containers */
+  height: 50px;
+  padding: 0 var(--space-md);
+  border: 2px solid rgba(30, 77, 59, 0.20);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: var(--color-muted);
+}
+
+.form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(30, 77, 59, 0.10);
+}
+
+/* ============================================================
+   8. PROSE / LEGAL PAGE STYLES
+   Used on terms.html and privacy.html
+   ============================================================ */
+.prose-page {
+  padding: var(--space-3xl) var(--container-pad);
+  min-height: calc(100vh - 64px - 260px); /* Fill space between nav and footer */
+}
+
+.prose-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: clamp(32px, 6vw, 56px);
+  max-width: 760px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-card);
+}
+
+.prose-card h1 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.prose-card .prose-meta {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  margin-bottom: var(--space-2xl);
+}
+
+.prose-card h2 {
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--color-lime-border);
+}
+
+.prose-card p {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.75;
+  margin-bottom: var(--space-md);
+}
+
+.prose-card p:last-child {
+  margin-bottom: 0;
+}
+
+.prose-card ul {
+  list-style: disc;
+  padding-left: var(--space-xl);
+  margin-bottom: var(--space-md);
+}
+
+.prose-card ul li {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.75;
+  margin-bottom: var(--space-xs);
+}
+
+.prose-card a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.prose-card a:hover {
+  color: var(--color-amber);
+}
+
+/* ============================================================
+   9. RESPONSIVE — MOBILE BREAKPOINT (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Footer collapses to single column */
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  /* Nav CTA text shortens on very small screens */
+  .site-nav__cta {
+    font-size: 0.85rem;
+    padding: 9px 16px;
+  }
+
+  /* Prose card removes excess padding on mobile */
+  .prose-card {
+    border-radius: var(--radius-lg);
+  }
+
+  .prose-page {
+    padding: var(--space-xl) var(--container-pad);
+  }
+}
+
+@media (max-width: 480px) {
+  .site-nav__logo {
+    font-size: 1.2rem;
+  }
+}

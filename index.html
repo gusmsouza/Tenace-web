@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       TENACE — Landing Page
+       https://tenace.fit
+       "Training for life."
+       ============================================================ -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary meta -->
+  <title>TENACE — Training for life.</title>
+  <meta name="description" content="TENACE is a gym tracker built for sustainable progress — not quick fixes. Log every set, track your body, and celebrate real consistency. Coming soon to iOS and Android." />
+
+  <!-- Open Graph (social sharing previews) -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://tenace.fit/" />
+  <meta property="og:title"       content="TENACE — Training for life." />
+  <meta property="og:description" content="The gym tracker built for sustainable progress — not quick fixes. Log every set, track your body, and celebrate real consistency." />
+  <meta property="og:image"       content="https://tenace.fit/og-image.png" />
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="TENACE — Training for life." />
+  <meta name="twitter:description" content="The gym tracker built for sustainable progress — not quick fixes." />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://tenace.fit/" />
+
+  <!-- Google Fonts — Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Shared stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- ============================================================
+       PAGE-SPECIFIC STYLES
+       These styles are used only on the landing page.
+       ============================================================ -->
+  <style>
+    /* ── HERO SECTION ─────────────────────────────────────── */
+    .hero {
+      padding: var(--space-3xl) var(--container-pad);
+    }
+
+    .hero__inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* Badge pill above the H1 */
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      background-color: var(--color-lime);
+      color: var(--color-primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero__badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      opacity: 0.5;
+    }
+
+    /* Main headline — app name */
+    .hero__title {
+      font-size: clamp(2.75rem, 6vw, 4rem);
+      font-weight: 800;
+      color: #3D3D3D;
+      line-height: 1.08;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Tagline — italic amber, sits directly below the title */
+    .hero__tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--color-amber);
+      margin-bottom: var(--space-lg);
+      line-height: 1.3;
+    }
+
+    /* Subtitle paragraph */
+    .hero__subtitle {
+      font-size: 1.1rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: var(--space-xl);
+    }
+
+    /* Inline email form (hero version) */
+    .hero__form {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+      flex-wrap: wrap;
+    }
+
+    .hero__form .form-input {
+      min-width: 220px;
+    }
+
+    /* Success message shown after form submit */
+    .form-success {
+      display: none;
+      color: var(--color-primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 12px 16px;
+      background: rgba(168, 194, 110, 0.2);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-lime);
+    }
+
+    /* ── STORE BADGES ──────────────────────────────────────── */
+    .store-badges {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    /* Each badge is a pill shaped button with icon + text */
+    .store-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #1A2E26;       /* Very dark for store badge look */
+      color: #FFFFFF;
+      border-radius: var(--radius-md);
+      padding: 10px 18px;
+      opacity: 0.55;                   /* Greyed out — "Coming Soon" treatment */
+      pointer-events: none;            /* Not clickable yet */
+      user-select: none;
+      min-width: 155px;
+    }
+
+    .store-badge__icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      fill: #FFFFFF;
+    }
+
+    .store-badge__text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .store-badge__coming-soon {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      line-height: 1;
+    }
+
+    .store-badge__store-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* ── PHONE MOCKUP ──────────────────────────────────────── */
+    .hero__mockup-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Outer phone shell */
+    .phone-mockup {
+      width: 260px;
+      height: 520px;
+      border-radius: 36px;
+      border: 2.5px solid var(--color-primary);
+      background-color: var(--color-surface);
+      box-shadow:
+        0 24px 60px rgba(30, 77, 59, 0.18),
+        0 4px 16px rgba(30, 77, 59, 0.10),
+        inset 0 0 0 1px rgba(30, 77, 59, 0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Status bar / top chrome */
+    .phone-screen__topbar {
+      height: 48px;
+      background-color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      flex-shrink: 0;
+    }
+
+    .phone-screen__topbar-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.04em;
+    }
+
+    .phone-screen__topbar-dots {
+      display: flex;
+      gap: 4px;
+    }
+
+    .phone-screen__topbar-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.45);
+    }
+
+    /* Scrollable content area */
+    .phone-screen__content {
+      flex: 1;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow: hidden;
+    }
+
+    /* Small label above a card group */
+    .phone-screen__label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      padding-left: 4px;
+    }
+
+    /* Generic UI card inside the mockup */
+    .phone-card {
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+
+    /* Plan card — white surface with a colored left border (matches real app) */
+    .phone-card--plan {
+      background-color: #FFFFFF;
+      border: 1px solid rgba(30, 77, 59, 0.10);
+      border-left-width: 4px;
+      box-shadow: 0 1px 4px rgba(30,77,59,0.06);
+    }
+
+    .phone-card--lime {
+      background-color: rgba(168, 194, 110, 0.18);
+      border: 1px solid rgba(168, 194, 110, 0.40);
+    }
+
+    .phone-card--amber {
+      background-color: rgba(232, 145, 58, 0.12);
+      border: 1px solid rgba(232, 145, 58, 0.30);
+    }
+
+    .phone-card--green {
+      background-color: rgba(30, 77, 59, 0.08);
+      border: 1px solid rgba(30, 77, 59, 0.15);
+    }
+
+    /* Card inner layout helpers */
+    .phone-card__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .phone-card__row:last-child {
+      margin-bottom: 0;
+    }
+
+    .phone-card__title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .phone-card__sub {
+      font-size: 0.58rem;
+      color: var(--color-muted);
+      margin-top: 2px;
+    }
+
+    .phone-card__badge {
+      font-size: 0.58rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 99px;
+    }
+
+    .phone-card__badge--lime {
+      background: var(--color-lime);
+      color: var(--color-primary);
+    }
+
+    .phone-card__badge--amber {
+      background: var(--color-amber);
+      color: #FFF;
+    }
+
+    /* Progress bar within a card */
+    .phone-card__bar-bg {
+      height: 4px;
+      background: rgba(30,77,59,0.10);
+      border-radius: 2px;
+      margin-top: 6px;
+      overflow: hidden;
+    }
+
+    .phone-card__bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--color-lime);
+    }
+
+    /* Sparkline-style mini chart */
+    .phone-card__sparkline {
+      width: 100%;
+      height: 28px;
+    }
+
+    /* Set rows — looks like logged workout sets */
+    .phone-card__sets {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-top: 6px;
+    }
+
+    .phone-card__set-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .phone-card__set-num {
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: var(--color-muted);
+      width: 14px;
+    }
+
+    .phone-card__set-pill {
+      font-size: 0.55rem;
+      font-weight: 600;
+      background: rgba(30,77,59,0.08);
+      border-radius: 4px;
+      padding: 2px 6px;
+      color: var(--color-text);
+    }
+
+    /* Bottom tab bar of the mockup */
+    .phone-screen__tabbar {
+      height: 50px;
+      background-color: var(--color-surface);
+      border-top: 1px solid rgba(30,77,59,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px;
+      flex-shrink: 0;
+    }
+
+    .phone-tab-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .phone-tab-icon__dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      background-color: rgba(30, 77, 59, 0.15);
+    }
+
+    .phone-tab-icon__dot--active {
+      background-color: var(--color-primary);
+    }
+
+    .phone-tab-icon__label {
+      width: 24px;
+      height: 3px;
+      border-radius: 2px;
+      background-color: rgba(30,77,59,0.10);
+    }
+
+    .phone-tab-icon__label--active {
+      background-color: var(--color-primary);
+    }
+
+    /* ── PHILOSOPHY STRIP ──────────────────────────────────── */
+    .philosophy {
+      background-color: var(--color-primary);
+      color: #FFFFFF;
+      padding: var(--space-3xl) var(--container-pad);
+      text-align: center;
+    }
+
+    .philosophy__inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .philosophy__label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.65;
+      margin-bottom: var(--space-lg);
+    }
+
+    .philosophy__quote {
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.7;
+      opacity: 0.92;
+    }
+
+    /* ── FEATURES SECTION ──────────────────────────────────── */
+    .features {
+      padding: var(--space-3xl) var(--container-pad);
+    }
+
+    .features__inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+    }
+
+    .features__header {
+      text-align: center;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .features__label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      margin-bottom: var(--space-sm);
+    }
+
+    .features__title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      color: #3D3D3D;
+      font-weight: 800;
+    }
+
+    .features__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    /* Individual feature card */
+    .feature-card {
+      background-color: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(30, 77, 59, 0.07);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(30, 77, 59, 0.14);
+    }
+
+    /* Icon container */
+    .feature-card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background-color: rgba(30, 77, 59, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-md);
+      font-size: 1.4rem;
+    }
+
+    .feature-card__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3D3D3D;
+      margin-bottom: var(--space-sm);
+    }
+
+    .feature-card__desc {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      line-height: 1.65;
+    }
+
+    /* ── EMAIL CTA SECTION ─────────────────────────────────── */
+    .cta-section {
+      padding: var(--space-3xl) var(--container-pad);
+      background-color: var(--color-lime-tint);
+      border-top: 1px solid var(--color-lime-border);
+      border-bottom: 1px solid var(--color-lime-border);
+    }
+
+    .cta-section__inner {
+      max-width: 580px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-section__title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 800;
+      color: #3D3D3D;
+      margin-bottom: var(--space-md);
+    }
+
+    .cta-section__subtitle {
+      font-size: 1rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-xl);
+    }
+
+    /* Stacked form (wider, standalone version) */
+    .cta-section__form {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cta-section__form .form-input {
+      min-width: 260px;
+      flex: 1;
+      max-width: 360px;
+    }
+
+    .cta-section__note {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      margin-top: var(--space-md);
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      /* Features become 2-column */
+      .features__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Hero becomes single column, stacked */
+      .hero__inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+      }
+
+      .hero__mockup-wrapper {
+        order: -1; /* Phone mockup appears above text on mobile */
+      }
+
+      /* Make the phone a bit smaller on mobile */
+      .phone-mockup {
+        width: 220px;
+        height: 440px;
+      }
+
+      /* Hero form goes full width */
+      .hero__form {
+        flex-direction: column;
+      }
+
+      .hero__form .form-input {
+        min-width: 0;
+      }
+
+      /* Features become 1-column */
+      .features__grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* CTA form stacks */
+      .cta-section__form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cta-section__form .form-input {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero__title {
+        font-size: 2.75rem;
+      }
+
+      .hero__tagline {
+        font-size: 1rem;
+      }
+
+      .store-badges {
+        flex-direction: column;
+      }
+
+      .store-badge {
+        min-width: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       Sticky forest-green nav with TENACE wordmark and CTA button
+       ============================================================ -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <!-- TENACE horizontal logo — white variant for dark green nav background -->
+      <a href="/" class="site-nav__logo" aria-label="TENACE home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 100" height="34" aria-hidden="true" focusable="false" style="display:block;">
+          <!-- Symbol — T-mark scaled to 80×80 -->
+          <g transform="translate(10, 10) scale(0.4)">
+            <!-- T crossbar — white on dark nav -->
+            <rect x="14" y="18" width="172" height="56" rx="11" fill="#FFFFFF"/>
+            <!-- T stem — white -->
+            <rect x="74" y="18" width="52" height="166" rx="9" fill="#FFFFFF"/>
+            <!-- Fiber separation stroke — dark green for contrast against white -->
+            <path d="M 18,110 C 52,42 140,35 192,6 C 150,65 76,84 18,110 Z"
+                  fill="none" stroke="#1E4D3B" stroke-width="10" stroke-linejoin="round"/>
+            <!-- Fiber amber fill -->
+            <path d="M 18,110 C 52,42 140,35 192,6 C 150,65 76,84 18,110 Z"
+                  fill="#E8913A"/>
+          </g>
+          <!-- Wordmark — white -->
+          <text x="114" y="65"
+            font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+            font-weight="700" font-size="42" letter-spacing="10"
+            fill="#FFFFFF">TENACE</text>
+        </svg>
+      </a>
+      <div class="site-nav__actions">
+        <a href="#signup" class="btn-primary site-nav__cta">Get Notified</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO SECTION
+       Two-column layout: left = copy + form, right = phone mockup
+       ============================================================ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__inner">
+
+      <!-- ── LEFT COLUMN: Copy + form ── -->
+      <div class="hero__copy">
+
+        <!-- "Coming soon" badge pill -->
+        <div class="hero__badge" aria-label="Status: coming soon on iOS and Android">
+          <span class="hero__badge-dot" aria-hidden="true"></span>
+          Coming soon &nbsp;·&nbsp; iOS &amp; Android
+        </div>
+
+        <!-- Main headline — app name -->
+        <h1 class="hero__title" id="hero-title">TENACE</h1>
+
+        <!-- Tagline — brand manifesto -->
+        <p class="hero__tagline">Training for life.</p>
+
+        <!-- Subtitle / value proposition -->
+        <p class="hero__subtitle">
+          The gym tracker built for sustainable progress — not quick fixes.
+          Log every set, track your body, and celebrate real consistency.
+        </p>
+
+        <!-- ── INLINE EMAIL SIGNUP FORM ──
+             IMPORTANT: To make this form work you must:
+             1. Create a free account at https://formspree.io
+             2. Create a new form in your Formspree dashboard
+             3. Copy your form ID (it looks like "xrgvkznp")
+             4. Replace "REPLACE_WITH_FORM_ID" below with your actual form ID
+             Example: action="https://formspree.io/f/xrgvkznp"
+        -->
+        <form
+          class="hero__form"
+          action="https://formspree.io/f/xnjgllyq"
+          method="POST"
+          aria-label="Launch notification sign-up"
+        >
+          <!-- Hidden subject line for the email you'll receive -->
+          <input type="hidden" name="_subject" value="New Tenace launch notification signup" />
+
+          <input
+            class="form-input"
+            type="email"
+            name="email"
+            placeholder="Your email address"
+            required
+            autocomplete="email"
+            aria-label="Email address"
+          />
+          <button type="submit" class="btn-primary">Notify Me</button>
+        </form>
+
+        <!-- App store "coming soon" badges — CSS only, no images -->
+        <div class="store-badges" aria-label="App store availability — coming soon">
+
+          <!-- Apple App Store badge -->
+          <div class="store-badge" aria-label="App Store — coming soon">
+            <!-- Apple logo (simplified SVG path) -->
+            <svg class="store-badge__icon" viewBox="0 0 24 24" aria-hidden="true" role="img">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            <div class="store-badge__text">
+              <span class="store-badge__coming-soon">Coming Soon</span>
+              <span class="store-badge__store-name">App Store</span>
+            </div>
+          </div>
+
+          <!-- Google Play badge -->
+          <div class="store-badge" aria-label="Google Play — coming soon">
+            <!-- Google Play triangle icon (simplified SVG) -->
+            <svg class="store-badge__icon" viewBox="0 0 24 24" aria-hidden="true" role="img">
+              <path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.36.6 1.24 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z"/>
+            </svg>
+            <div class="store-badge__text">
+              <span class="store-badge__coming-soon">Coming Soon</span>
+              <span class="store-badge__store-name">Google Play</span>
+            </div>
+          </div>
+
+        </div><!-- /.store-badges -->
+      </div><!-- /.hero__copy -->
+
+
+      <!-- ── RIGHT COLUMN: CSS phone mockup ── -->
+      <div class="hero__mockup-wrapper" aria-hidden="true">
+        <div class="phone-mockup" role="img" aria-label="TENACE app interface preview">
+
+          <!-- Top bar — simulates the app header -->
+          <div class="phone-screen__topbar">
+            <span class="phone-screen__topbar-title">TENACE</span>
+            <div class="phone-screen__topbar-dots">
+              <div class="phone-screen__topbar-dot"></div>
+              <div class="phone-screen__topbar-dot"></div>
+              <div class="phone-screen__topbar-dot"></div>
+            </div>
+          </div>
+
+          <!-- Scrollable content area — HomeScreen layout -->
+          <div class="phone-screen__content">
+
+            <!-- MY PLANS section -->
+            <div class="phone-card__row" style="margin-bottom:0;">
+              <span class="phone-screen__label">My Plans</span>
+              <span style="font-size:0.55rem;font-weight:700;color:#E8913A;letter-spacing:0.04em;">+ NEW</span>
+            </div>
+
+            <!-- Plan card 1 — amber left border -->
+            <div class="phone-card phone-card--plan" style="border-left-color: #E8913A;">
+              <div class="phone-card__row">
+                <div>
+                  <div class="phone-card__title">Upper Body A</div>
+                  <div class="phone-card__sub">5 exercises · Push &amp; Pull</div>
+                </div>
+                <span class="phone-card__badge phone-card__badge--amber">Today</span>
+              </div>
+            </div>
+
+            <!-- Plan card 2 — blue left border -->
+            <div class="phone-card phone-card--plan" style="border-left-color: #5B7FA6;">
+              <div class="phone-card__row">
+                <div>
+                  <div class="phone-card__title">Lower Body</div>
+                  <div class="phone-card__sub">4 exercises · Legs</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CHALLENGE section -->
+            <div class="phone-screen__label" style="margin-top:2px;">Challenge</div>
+
+            <!-- Streak challenge card — amber tint -->
+            <div class="phone-card phone-card--amber">
+              <div class="phone-card__row">
+                <div>
+                  <div class="phone-card__title">🔥 7-Day Streak</div>
+                  <div class="phone-card__sub">Day 4 of 7</div>
+                </div>
+                <span class="phone-card__badge phone-card__badge--amber">Active</span>
+              </div>
+              <div class="phone-card__bar-bg">
+                <div class="phone-card__bar-fill" style="width:57%;background:#E8913A;"></div>
+              </div>
+            </div>
+
+          </div><!-- /.phone-screen__content -->
+
+          <!-- Bottom tab bar — 4 tabs -->
+          <div class="phone-screen__tabbar">
+            <div class="phone-tab-icon">
+              <div class="phone-tab-icon__dot phone-tab-icon__dot--active"></div>
+              <div class="phone-tab-icon__label phone-tab-icon__label--active"></div>
+            </div>
+            <div class="phone-tab-icon">
+              <div class="phone-tab-icon__dot"></div>
+              <div class="phone-tab-icon__label"></div>
+            </div>
+            <div class="phone-tab-icon">
+              <div class="phone-tab-icon__dot"></div>
+              <div class="phone-tab-icon__label"></div>
+            </div>
+            <div class="phone-tab-icon">
+              <div class="phone-tab-icon__dot"></div>
+              <div class="phone-tab-icon__label"></div>
+            </div>
+          </div>
+
+        </div><!-- /.phone-mockup -->
+      </div><!-- /.hero__mockup-wrapper -->
+
+    </div><!-- /.hero__inner -->
+  </section>
+
+
+  <!-- ============================================================
+       PHILOSOPHY STRIP
+       Full-width dark green band with brand manifesto quote
+       ============================================================ -->
+  <section class="philosophy" aria-labelledby="philosophy-title">
+    <div class="philosophy__inner">
+      <p class="philosophy__label" id="philosophy-title">Our Philosophy</p>
+      <p class="philosophy__quote">
+        &ldquo;TENACE comes from the Latin <em>tenax</em> — persistent, unyielding.
+        Real progress isn't about intensity or motivation. It's about showing up,
+        session after session.&rdquo;
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FEATURES SECTION
+       3-column grid of feature cards
+       ============================================================ -->
+  <section class="features" aria-labelledby="features-title">
+    <div class="features__inner">
+
+      <div class="features__header">
+        <p class="features__label">What's Inside</p>
+        <h2 class="features__title" id="features-title">Everything your training needs</h2>
+      </div>
+
+      <div class="features__grid">
+
+        <!-- Feature 1: Smart Workout Logging -->
+        <div class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">
+            <!-- Dumbbell / barbell icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E4D3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="11" width="12" height="2" rx="1"/>
+              <rect x="3" y="9" width="3" height="6" rx="1"/>
+              <rect x="18" y="9" width="3" height="6" rx="1"/>
+              <rect x="1" y="10" width="2" height="4" rx="1"/>
+              <rect x="21" y="10" width="2" height="4" rx="1"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">Smart Workout Logging</h3>
+          <p class="feature-card__desc">
+            Three tracking modes: weight &amp; reps, reps only, and timed sets.
+            Covers every exercise in your program — from heavy compound lifts to
+            bodyweight circuits and long-hold planks.
+          </p>
+        </div>
+
+        <!-- Feature 2: Progressive Overload Hints -->
+        <div class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">
+            <!-- Up-arrow / trend icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E4D3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+              <polyline points="17 6 23 6 23 12"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">Progressive Overload Hints</h3>
+          <p class="feature-card__desc">
+            The app detects when you're consistently hitting your target and suggests
+            a conservative weight increase. Science-backed, never aggressive — because
+            slow progress is the progress that sticks.
+          </p>
+        </div>
+
+        <!-- Feature 3: Achievement Badges -->
+        <div class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">
+            <!-- Medal / badge icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E4D3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="14" r="6"/>
+              <path d="M9 2h6l1 5H8z"/>
+              <line x1="12" y1="8" x2="12" y2="14"/>
+              <circle cx="12" cy="14" r="2" fill="#1E4D3B"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">Achievement Badges</h3>
+          <p class="feature-card__desc">
+            9 milestone badges that celebrate your journey. Earn them again and
+            again — there's no finish line in TENACE. Every session counts, and
+            every streak deserves recognition.
+          </p>
+        </div>
+
+        <!-- Feature 4: Body Composition Tracking -->
+        <div class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">
+            <!-- Body / person icon with chart -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E4D3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="2"/>
+              <path d="M12 7v7"/>
+              <path d="M8 11l4 3 4-3"/>
+              <polyline points="3 20 8 14 12 17 16 14 21 20"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">Body Composition Tracking</h3>
+          <p class="feature-card__desc">
+            Log body weight, body fat percentage, and circumferences. Sparkline charts
+            show your trend over time so you can see the arc of your progress — not
+            just today's number.
+          </p>
+        </div>
+
+        <!-- Feature 5: Weekly Planning -->
+        <div class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">
+            <!-- Calendar icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E4D3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+              <rect x="7" y="14" width="3" height="3" rx="0.5" fill="#1E4D3B"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">Weekly Planning</h3>
+          <p class="feature-card__desc">
+            Assign training plans to each day of the week. The app shows today's
+            workout the moment you open it — no searching, no deciding. Just show up
+            and train.
+          </p>
+        </div>
+
+        <!-- Feature 6: Training History -->
+        <div class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">
+            <!-- Clock / history icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E4D3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/>
+              <polyline points="12 7 12 12 15.5 15.5"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">Training History</h3>
+          <p class="feature-card__desc">
+            Every session, every set — expandable and always with you. Your entire
+            training life in one place, so you can look back at how far you've come
+            and fuel the next session.
+          </p>
+        </div>
+
+      </div><!-- /.features__grid -->
+    </div><!-- /.features__inner -->
+  </section>
+
+
+  <!-- ============================================================
+       EMAIL CTA SECTION (id="signup")
+       This is the anchor target for the "Get Notified" nav button.
+       Uses the same Formspree endpoint — just a standalone form.
+       ============================================================ -->
+  <section class="cta-section" id="signup" aria-labelledby="cta-title">
+    <div class="cta-section__inner">
+      <h2 class="cta-section__title" id="cta-title">Be the first to know</h2>
+      <p class="cta-section__subtitle">
+        Tenace Training is launching on the App Store and Google Play.
+        Leave your email and we'll notify you the moment it's live.
+      </p>
+
+      <!-- ── STANDALONE EMAIL SIGNUP FORM ──
+           Same Formspree endpoint as the hero form above.
+           Replace REPLACE_WITH_FORM_ID with your actual Formspree form ID.
+      -->
+      <form
+        class="cta-section__form"
+        action="https://formspree.io/f/xnjgllyq"
+        method="POST"
+        aria-label="Launch notification sign-up"
+      >
+        <input type="hidden" name="_subject" value="New Tenace launch notification signup" />
+        <input
+          class="form-input"
+          type="email"
+          name="email"
+          placeholder="Your email address"
+          required
+          autocomplete="email"
+          aria-label="Email address"
+        />
+        <button type="submit" class="btn-primary">Notify Me</button>
+      </form>
+
+      <p class="cta-section__note">No spam, ever. Just one email when we launch.</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       Forest green, three-column grid: brand | links | legal
+       ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+
+      <!-- Column 1: Logo + tagline -->
+      <div class="site-footer__brand">
+        <p class="site-footer__brand-name">TENACE</p>
+        <p class="site-footer__tagline">Training for life.</p>
+      </div>
+
+      <!-- Column 2: Navigation links -->
+      <nav aria-label="Footer navigation">
+        <p class="site-footer__heading">Pages</p>
+        <ul class="site-footer__links">
+          <li><a href="/">Home</a></li>
+          <li><a href="#signup">Get Notified</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </nav>
+
+      <!-- Column 3: Contact only (Terms/Privacy are already in the Pages column) -->
+      <div>
+        <p class="site-footer__heading">Contact</p>
+        <ul class="site-footer__links">
+          <li><a href="mailto:contact@tenace.fit">contact@tenace.fit</a></li>
+        </ul>
+      </div>
+
+    </div><!-- /.site-footer__inner -->
+
+    <div class="site-footer__bottom">
+      &copy; 2026 Gustavo Medeiros Souza. All rights reserved.
+      TENACE and Tenace Training are trademarks of Gustavo Medeiros Souza.
+    </div>
+  </footer>
+
+</body>
+</html>

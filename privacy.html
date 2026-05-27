@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Privacy Policy — TENACE</title>
-  <meta name="description" content="Privacy Policy for TENACE (Tenace Training) — the gym tracker app by Gustavo Medeiros Souza. Your workout data never leaves your device." />
+  <meta name="description" content="Privacy Policy for TENACE (Tenace Training) — the gym tracker app by Gustavo Medeiros Souza." />
   <meta name="robots" content="noindex" />
 
   <link rel="canonical" href="https://tenace.fit/privacy.html" />
@@ -46,7 +46,7 @@
     <article class="prose-card">
 
       <h1 id="privacy-title">Privacy Policy</h1>
-      <p class="prose-meta">Last updated: March 18, 2026</p>
+      <p class="prose-meta">Last updated: May 27, 2026</p>
 
       <p>
         Your privacy matters to us. This Privacy Policy explains what information
@@ -71,55 +71,74 @@
       </p>
       <p>
         For the purposes of applicable data protection law, Gustavo Medeiros Souza
-        is the data controller for any personal data collected through the Website
-        (described below). The App itself does not transmit personal data to us —
-        see Section 2b for details.
+        is the data controller for any personal data collected through the App
+        and the Website.
       </p>
 
 
       <!-- ── 2. Data We Collect ── -->
       <h2>2. Data We Collect</h2>
 
-      <p><strong>a) Email address — Website sign-ups only</strong></p>
+      <p><strong>a) Local use — no account required</strong></p>
       <p>
-        If you voluntarily submit your email address through the launch notification
-        sign-up form on the Website, we collect and store that email address. This
-        is the only personal information we collect through the Website. Providing
-        your email is entirely optional — you can use the App without ever visiting
-        the Website or submitting your email.
+        You can use TENACE without creating an account. In this mode, all workout
+        logs, exercise sets, body measurements, training plans, and history are
+        stored <strong>exclusively on your device</strong> using a local database.
+        This data is never transmitted to our servers or any third party. It is
+        deleted when you uninstall the App or use the &ldquo;Erase All Data&rdquo;
+        option in the App&rsquo;s Settings screen.
+      </p>
+
+      <p><strong>b) Optional account — cloud backup</strong></p>
+      <p>
+        You may optionally create a TENACE account using your email address and a
+        password. Creating an account enables cloud backup of your training data so
+        it can be restored if you change devices or reinstall the App.
       </p>
       <p>
-        Email submissions are processed via <a href="https://formspree.io" target="_blank" rel="noopener noreferrer">Formspree</a>,
-        a third-party form service. By submitting your email, you also agree to
-        Formspree's privacy policy. We do not store your email on our own servers —
+        When you create an account and enable cloud backup, the following data is
+        transmitted to and stored on our cloud infrastructure:
+      </p>
+      <ul>
+        <li><strong>Account credentials:</strong> email address and encrypted password.</li>
+        <li><strong>Training data:</strong> workout logs, exercise sets, reps, weights,
+            notes, training plans, and body composition entries (weight, body fat
+            percentage, circumferences).</li>
+        <li><strong>App usage data:</strong> streaks, achievement badges, and training
+            history.</li>
+      </ul>
+      <p>
+        This data is stored using <strong>Supabase</strong>
+        (<a href="https://supabase.com" target="_blank" rel="noopener noreferrer">supabase.com</a>),
+        a third-party cloud infrastructure provider. Supabase stores data on servers
+        located in the United States. By creating an account, you acknowledge that
+        your data will be processed and stored by Supabase in accordance with their
+        <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+      </p>
+      <p>
+        Account creation is entirely optional. All core app features are available
+        without an account.
+      </p>
+
+      <p><strong>c) Email address — Website sign-ups</strong></p>
+      <p>
+        If you voluntarily submit your email address through the Website&rsquo;s
+        notification form, we collect and store that email address. Providing your
+        email is entirely optional — you can use the App without ever visiting the
+        Website or submitting your email.
+      </p>
+      <p>
+        Email submissions are processed via
+        <a href="https://formspree.io" target="_blank" rel="noopener noreferrer">Formspree</a>,
+        a third-party form service. We do not store your email on our own servers —
         it is held by Formspree and accessible to us through their dashboard.
       </p>
 
-      <p><strong>b) Workout &amp; body data — stored locally on your device only</strong></p>
+      <p><strong>d) Automatically collected technical data</strong></p>
       <p>
-        All workout logs, exercise sets, body measurements, programs, plans, training
-        history, and any other fitness data you enter into the App are stored
-        <strong>exclusively on your device</strong> using a local SQLite database.
-      </p>
-      <p>
-        This data:
-      </p>
-      <ul>
-        <li><strong>Never leaves your phone.</strong> We do not transmit it to our servers.</li>
-        <li><strong>We never see it.</strong> We have no access to your workout or body data, ever.</li>
-        <li><strong>Is not collected, stored, or processed by us.</strong> It exists only on the device you control.</li>
-        <li><strong>Is deleted when you uninstall the App</strong>, or when you use the &ldquo;Erase All Data&rdquo; option in the App's Settings screen.</li>
-      </ul>
-      <p>
-        This is a deliberate design choice, not a limitation. We believe your
-        personal health and training data belongs to you alone.
-      </p>
-
-      <p><strong>c) Automatically collected technical data</strong></p>
-      <p>
-        When you use the App, your device's operating system may collect standard
+        When you use the App, your device&rsquo;s operating system may collect standard
         technical information (such as crash reports or performance diagnostics)
-        and share it with Apple or Google in accordance with the platform's own
+        and share it with Apple or Google in accordance with the platform&rsquo;s own
         privacy policy. This data is collected by the platform, not by us, and
         is used to improve overall system performance. We receive only aggregated,
         anonymised crash diagnostics through App Store Connect and Google Play
@@ -127,61 +146,68 @@
       </p>
 
 
-      <!-- ── 3. How We Use Your Email ── -->
-      <h2>3. How We Use Your Email</h2>
+      <!-- ── 3. How We Use Your Data ── -->
+      <h2>3. How We Use Your Data</h2>
       <p>
-        If you sign up for launch notifications, your email address will be used
-        for one purpose only: to send you a single email notifying you when Tenace
-        Training becomes available on the App Store and/or Google Play.
-      </p>
-      <p>
-        We will never:
+        We use the data we collect exclusively to:
       </p>
       <ul>
-        <li>Sell, rent, or share your email address with any third party for
-            marketing purposes;</li>
-        <li>Add you to any newsletter or recurring marketing list without your
-            separate, explicit consent;</li>
-        <li>Use your email for any purpose other than the one stated above.</li>
+        <li>Provide and maintain the App&rsquo;s cloud backup and sync functionality;</li>
+        <li>Authenticate your account and keep it secure;</li>
+        <li>Restore your training data when you reinstall the App or change devices;</li>
+        <li>Send the one-time launch notification if you signed up on the Website.</li>
       </ul>
       <p>
-        After the launch notification has been sent, we will either delete your
-        email or retain it only if you have separately opted in to receive further
-        communications.
+        We do not sell, rent, or share your personal data with third parties for
+        marketing or advertising purposes. We do not use your training data to
+        serve you ads.
       </p>
 
 
-      <!-- ── 4. Cookies & Analytics ── -->
-      <h2>4. Cookies &amp; Analytics</h2>
+      <!-- ── 4. Third-Party Services ── -->
+      <h2>4. Third-Party Services</h2>
       <p>
-        The Website currently uses <strong>no cookies</strong>, no tracking pixels,
-        and no third-party analytics services (such as Google Analytics). We do not
-        track your browsing behaviour on tenace.fit.
+        The App and Website use the following third-party services that may process
+        personal data:
       </p>
-      <p>
-        If this changes in the future — for example, if we add privacy-respecting
-        analytics to understand general traffic patterns — we will update this
-        policy before doing so and, where required by law, obtain your consent.
-      </p>
+      <ul>
+        <li>
+          <strong>Supabase</strong> — cloud database and authentication for the
+          optional account and backup feature.
+          <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        </li>
+        <li>
+          <strong>Formspree</strong> — Website email form processing.
+          <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        </li>
+        <li>
+          <strong>Apple App Store / Google Play</strong> — platform-level analytics
+          and crash diagnostics, subject to Apple&rsquo;s and Google&rsquo;s own privacy
+          policies.
+        </li>
+      </ul>
 
 
       <!-- ── 5. Data Retention ── -->
       <h2>5. Data Retention</h2>
       <p>
-        We retain your email address only for as long as necessary to fulfil the
-        purpose for which it was collected (sending the launch notification), or
-        until you request deletion, whichever comes first.
+        <strong>Account data:</strong> Your cloud data is retained for as long as
+        your account exists. You may delete your account at any time from the
+        App&rsquo;s Settings screen. Upon deletion, your account credentials and all
+        associated training data are permanently removed from our servers within
+        30 days.
       </p>
       <p>
-        Once the launch notification has been sent, we will delete email addresses
-        from our records within 30 days unless you have separately opted in to
-        receive further communications.
+        <strong>Local data:</strong> Stored on your device until you uninstall the
+        App or erase data manually via Settings.
       </p>
       <p>
-        To request earlier deletion of your email address, simply email us at
-        <a href="mailto:contact@tenace.fit">contact@tenace.fit</a> with the
-        subject line &ldquo;Delete my data&rdquo; and we will process your
-        request within 30 days.
+        <strong>Website email:</strong> Retained until the launch notification is
+        sent, then deleted within 30 days, unless you have separately opted in to
+        further communications. To request earlier deletion, email us at
+        <a href="mailto:contact@tenace.fit">contact@tenace.fit</a> with the subject
+        line &ldquo;Delete my data&rdquo; and we will process your request within
+        30 days.
       </p>
 
 
@@ -193,47 +219,73 @@
       <ul>
         <li><strong>Access</strong> — request a copy of the personal data we hold about you;</li>
         <li><strong>Correction</strong> — request that we correct inaccurate personal data;</li>
-        <li><strong>Deletion</strong> — request that we delete your personal data (the &ldquo;right to be forgotten&rdquo;);</li>
+        <li><strong>Deletion</strong> — delete your account and all associated cloud data
+            directly from the App&rsquo;s Settings screen, or by contacting us;</li>
+        <li><strong>Portability</strong> — export your training data as a CSV file
+            directly from the App;</li>
         <li><strong>Objection</strong> — object to our processing of your personal data;</li>
-        <li><strong>Portability</strong> — request that your data be provided to you in a portable format;</li>
-        <li><strong>Withdrawal of consent</strong> — withdraw consent at any time where processing is based on consent, without affecting the lawfulness of processing before withdrawal.</li>
+        <li><strong>Withdrawal of consent</strong> — delete your account at any time
+            to stop cloud processing, without affecting the lawfulness of processing
+            before withdrawal.</li>
       </ul>
       <p>
-        To exercise any of these rights, please contact us at
-        <a href="mailto:contact@tenace.fit">contact@tenace.fit</a>.
+        To exercise any of these rights, use the App&rsquo;s Settings screen or
+        contact us at <a href="mailto:contact@tenace.fit">contact@tenace.fit</a>.
         We will respond within 30 days. There is no charge for making a request.
       </p>
+
+
+      <!-- ── 7. Security ── -->
+      <h2>7. Security</h2>
       <p>
-        Please note: because your in-app workout and body data is stored solely on
-        your device and never transmitted to us, we have no ability to access,
-        correct, export, or delete it on your behalf. You retain full control over
-        that data at all times through the App's own settings.
+        We take reasonable technical and organisational measures to protect your
+        data. Account passwords are hashed and never stored in plain text. Data in
+        transit is encrypted using TLS. Supabase maintains its own security
+        certifications — see their
+        <a href="https://supabase.com/security" target="_blank" rel="noopener noreferrer">security documentation</a>
+        for details.
       </p>
 
 
-      <!-- ── 7. GDPR (EU Residents) ── -->
-      <h2>7. GDPR — For Residents of the European Economic Area</h2>
+      <!-- ── 8. Cookies & Analytics ── -->
+      <h2>8. Cookies &amp; Analytics</h2>
+      <p>
+        The Website currently uses <strong>no cookies</strong>, no tracking pixels,
+        and no third-party analytics services (such as Google Analytics). We do not
+        track your browsing behaviour on tenace.fit.
+      </p>
+      <p>
+        If this changes in the future, we will update this policy before doing so
+        and, where required by law, obtain your consent.
+      </p>
+
+
+      <!-- ── 9. GDPR (EU Residents) ── -->
+      <h2>9. GDPR — For Residents of the European Economic Area</h2>
       <p>
         If you are located in the European Economic Area (EEA), the United Kingdom,
         or Switzerland, the following additional provisions apply to you under the
         General Data Protection Regulation (GDPR) or equivalent legislation.
       </p>
       <p>
-        <strong>Lawful basis for processing:</strong> The sole personal data we
-        collect (your email address) is processed on the basis of your
-        <strong>consent</strong> (Article 6(1)(a) GDPR), which you provide by
-        voluntarily submitting the sign-up form. You may withdraw this consent
-        at any time by contacting us at
+        <strong>Lawful basis for processing:</strong> Account data and website email
+        are processed on the basis of your <strong>consent</strong>
+        (Article 6(1)(a) GDPR), provided when you voluntarily create an account or
+        submit the sign-up form. You may withdraw consent at any time by deleting
+        your account or contacting us at
         <a href="mailto:contact@tenace.fit">contact@tenace.fit</a>.
-        Withdrawal of consent does not affect the lawfulness of processing
-        carried out before withdrawal.
+        Withdrawal does not affect the lawfulness of processing carried out before
+        withdrawal.
       </p>
       <p>
-        <strong>International data transfers:</strong> Your email address is
-        processed by Formspree, which may store data on servers located outside
-        the EEA. Formspree maintains appropriate safeguards for international data
-        transfers. For details, please refer to
-        <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Formspree's Privacy Policy</a>.
+        <strong>International data transfers:</strong> Your data may be processed by
+        Supabase on servers located outside the EEA. Supabase maintains appropriate
+        safeguards for international data transfers. Your email address is also
+        processed by Formspree, which may store data outside the EEA. For details,
+        refer to
+        <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase&rsquo;s Privacy Policy</a>
+        and
+        <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Formspree&rsquo;s Privacy Policy</a>.
       </p>
       <p>
         <strong>Right to lodge a complaint:</strong> If you believe our processing
@@ -243,34 +295,34 @@
       </p>
 
 
-      <!-- ── 8. Children's Privacy ── -->
-      <h2>8. Children's Privacy</h2>
+      <!-- ── 10. Children's Privacy ── -->
+      <h2>10. Children&rsquo;s Privacy</h2>
       <p>
         The App and Website are not directed at children under the age of 13, and
         we do not knowingly collect personal information from children under 13.
-        If you are a parent or guardian and believe your child under 13 has
-        provided us with their email address, please contact us at
+        If you are a parent or guardian and believe your child under 13 has created
+        an account or provided us with their email address, please contact us at
         <a href="mailto:contact@tenace.fit">contact@tenace.fit</a> and we will
         promptly delete that information.
       </p>
       <p>
-        For users aged 13–17, we encourage parental involvement in their use of
-        the App. Please review these Terms together with any minors in your care.
+        For users aged 13&ndash;17, we encourage parental involvement in their use of
+        the App. Please review this Policy together with any minors in your care.
       </p>
 
 
-      <!-- ── 9. Changes to This Policy ── -->
-      <h2>9. Changes to This Policy</h2>
+      <!-- ── 11. Changes to This Policy ── -->
+      <h2>11. Changes to This Policy</h2>
       <p>
         We may update this Privacy Policy from time to time to reflect changes in
-        our practices, the App's features, or applicable law. When we make changes,
+        our practices, the App&rsquo;s features, or applicable law. When we make changes,
         we will update the &ldquo;Last updated&rdquo; date at the top of this page.
       </p>
       <p>
-        For material changes — particularly those that affect how we use your email
-        address — we will make reasonable efforts to notify you (for example, by
-        sending an email if we have your address, or by posting a prominent notice
-        on the Website) before the changes take effect.
+        For material changes — particularly those that affect how we process your
+        account or training data — we will make reasonable efforts to notify you
+        (for example, by sending an email if we have your address, or by posting a
+        prominent notice on the Website) before the changes take effect.
       </p>
       <p>
         We encourage you to review this policy periodically. Your continued use of
@@ -279,8 +331,8 @@
       </p>
 
 
-      <!-- ── 10. Contact ── -->
-      <h2>10. Contact</h2>
+      <!-- ── 12. Contact ── -->
+      <h2>12. Contact</h2>
       <p>
         If you have any questions, concerns, or requests regarding this Privacy
         Policy or how we handle your data, please reach out:

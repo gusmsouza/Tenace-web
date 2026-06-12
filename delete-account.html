@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       TENACE — Delete Your Account
+       https://tenace.fit/delete-account.html
+
+       WHY THIS PAGE EXISTS:
+       Google Play's User Data policy requires apps with account
+       creation to provide a web URL where users can delete their
+       account without needing the app installed. This URL is
+       declared in the Play Console → Data Safety form.
+
+       HOW IT WORKS (no frameworks, no SDK — plain fetch):
+       1. The user signs in with email + password
+          (POST /auth/v1/token — same Supabase auth the app uses).
+       2. The page calls the delete-account Edge Function with the
+          session token. The function verifies the token server-side
+          and deletes that user; ON DELETE CASCADE wipes all their
+          cloud data. See supabase/functions/delete-account/index.ts.
+       3. The ANON_KEY below is the same public key shipped inside
+          the app binary — it is safe to expose by design. All real
+          security lives in the Edge Function's JWT verification.
+       ============================================================ -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Delete Your Account — TENACE</title>
+  <meta name="description" content="Permanently delete your TENACE (Tenace Training) account and all cloud data." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="canonical" href="https://tenace.fit/delete-account.html" />
+
+  <!-- Google Fonts — Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Shared stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Page-specific tweaks: stacked form fields inside the prose card -->
+  <style>
+    .delete-form { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .delete-form .form-input { width: 100%; flex: none; }
+    .delete-form label.checkbox-row {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.9rem; line-height: 1.45; cursor: pointer;
+    }
+    .delete-form label.checkbox-row input { margin-top: 3px; }
+    .delete-form .btn-danger {
+      /* btn-primary shape, danger colour — destructive action */
+      background-color: #B3402E; color: #fff;
+    }
+    .delete-form .btn-danger:hover,
+    .delete-form .btn-danger:focus-visible { background-color: #9A3727; }
+    .delete-form .btn-danger[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; }
+    .form-status { font-size: 0.9rem; line-height: 1.5; margin-top: 4px; }
+    .form-status--error   { color: #B3402E; }
+    .form-status--success { color: #1E4D3B; font-weight: 600; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION (identical to index.html)
+       ============================================================ -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a href="/" class="site-nav__logo" aria-label="TENACE home">TENACE</a>
+      <div class="site-nav__actions">
+        <a href="/#signup" class="btn-primary site-nav__cta">Get Notified</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       ACCOUNT DELETION CONTENT
+       ============================================================ -->
+  <main class="prose-page" aria-labelledby="delete-title">
+    <article class="prose-card">
+
+      <h1 id="delete-title">Delete Your Account</h1>
+      <p class="prose-meta">For TENACE (Tenace Training) app accounts</p>
+
+      <p>
+        We're sorry to see you go. Deleting your account is permanent and
+        cannot be undone. Here is exactly what happens:
+      </p>
+
+      <ul>
+        <li><strong>Deleted immediately and permanently:</strong> your TENACE
+            Cloud account (email + credentials) and all data stored in the
+            cloud — workouts, sets, plans, body measurements, challenges,
+            badges, and settings.</li>
+        <li><strong>Not deleted:</strong> workout data saved locally on your
+            phone. The app keeps working offline. You can erase local data
+            inside the app under Settings if you wish.</li>
+      </ul>
+
+      <h2>Option 1 — In the app (easiest)</h2>
+      <p>
+        Open TENACE → <strong>Settings</strong> → <strong>Cloud Sync</strong> →
+        <strong>Delete Account</strong>. Two confirmations, done.
+      </p>
+
+      <h2>Option 2 — Right here</h2>
+      <p>
+        Sign in with your TENACE account credentials and confirm. This works
+        even if you no longer have the app installed.
+      </p>
+
+      <form class="delete-form" id="deleteForm" autocomplete="on">
+        <input class="form-input" type="email" id="email" placeholder="you@example.com"
+               autocomplete="email" required />
+        <input class="form-input" type="password" id="password" placeholder="Password"
+               autocomplete="current-password" required />
+        <label class="checkbox-row">
+          <input type="checkbox" id="confirmBox" required />
+          <span>I understand my account and all cloud data will be permanently
+                deleted, and this cannot be undone.</span>
+        </label>
+        <button class="btn-primary btn-danger" type="submit" id="deleteBtn">
+          Permanently Delete My Account
+        </button>
+        <p class="form-status" id="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <h2>Forgot your password?</h2>
+      <p>
+        Reset it from the app's sign-in screen (Forgot password?), or email us
+        at <a href="mailto:contact@tenace.fit">contact@tenace.fit</a> from the
+        address you registered with and we will process the deletion for you.
+      </p>
+
+    </article>
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER (identical to index.html)
+       ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+
+      <div class="site-footer__brand">
+        <p class="site-footer__brand-name">TENACE</p>
+        <p class="site-footer__tagline">Training for life.</p>
+      </div>
+
+      <nav aria-label="Footer navigation">
+        <p class="site-footer__heading">Pages</p>
+        <ul class="site-footer__links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/#signup">Get Notified</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <p class="site-footer__heading">Contact</p>
+        <ul class="site-footer__links">
+          <li><a href="mailto:contact@tenace.fit">contact@tenace.fit</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      &copy; 2026 Gustavo Medeiros Souza. All rights reserved.
+      TENACE and Tenace Training are trademarks of Gustavo Medeiros Souza.
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       DELETION LOGIC — plain fetch, no dependencies
+       ============================================================ -->
+  <script>
+    // Public project credentials — identical to the ones compiled into the
+    // mobile app. The anon key only allows what Row Level Security and the
+    // Edge Function's own JWT check permit; it cannot touch other users.
+    const SUPABASE_URL = 'https://bnbhgunvwisxwlxzbcqg.supabase.co';
+    const ANON_KEY     = 'sb_publishable_f7gWqCrlR3PjRbk7XrXEQg_3vJkCugJ';
+
+    const form      = document.getElementById('deleteForm');
+    const statusEl  = document.getElementById('status');
+    const deleteBtn = document.getElementById('deleteBtn');
+
+    function setStatus(message, kind) {
+      statusEl.textContent = message;
+      statusEl.className = 'form-status' + (kind ? ' form-status--' + kind : '');
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      setStatus('', null);
+
+      const email    = document.getElementById('email').value.trim().toLowerCase();
+      const password = document.getElementById('password').value;
+
+      deleteBtn.disabled = true;
+      setStatus('Verifying your credentials…', null);
+
+      try {
+        // ── 1. Sign in — proves the caller owns this account ───────────────
+        const authRes = await fetch(
+          SUPABASE_URL + '/auth/v1/token?grant_type=password',
+          {
+            method: 'POST',
+            headers: { 'apikey': ANON_KEY, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+          }
+        );
+        const authData = await authRes.json();
+
+        if (!authRes.ok || !authData.access_token) {
+          setStatus('Incorrect email or password. If you forgot your password, see below.', 'error');
+          return;
+        }
+
+        // ── 2. Call the delete-account Edge Function ───────────────────────
+        // The function verifies this token server-side and deletes ONLY the
+        // user it belongs to. All cloud data is removed by cascade.
+        setStatus('Deleting your account…', null);
+        const delRes = await fetch(
+          SUPABASE_URL + '/functions/v1/delete-account',
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Bearer ' + authData.access_token,
+              'apikey': ANON_KEY,
+            },
+          }
+        );
+
+        if (!delRes.ok) {
+          setStatus('Something went wrong on our side. Please try again, or email contact@tenace.fit and we will delete your account for you.', 'error');
+          return;
+        }
+
+        // ── 3. Done — nothing was stored in this browser ───────────────────
+        form.reset();
+        setStatus('Your account and all cloud data have been permanently deleted. Any data on your phone stays on the device. Thank you for training with TENACE.', 'success');
+      } catch (err) {
+        setStatus('Network error — please check your connection and try again.', 'error');
+      } finally {
+        deleteBtn.disabled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>

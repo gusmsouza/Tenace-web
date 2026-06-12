@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       TENACE — Email Confirmed
+       https://tenace.fit/email-confirmed.html
+
+       WHY THIS PAGE EXISTS:
+       When a new user clicks "Confirm email" in the signup email,
+       Supabase verifies the address and then redirects the browser
+       somewhere. Without this page the redirect lands on the bare
+       Site URL (or worse, localhost) and the user is left wondering
+       whether anything worked. This page closes the loop: clear
+       confirmation + instruction to return to the app.
+
+       Wired up via:
+       • Supabase → Authentication → URL Configuration →
+         Site URL = https://tenace.fit, and this URL added to
+         the Redirect URLs allowlist.
+       • The app passes emailRedirectTo with this URL in signUp()
+         (src/stores/workoutStore.ts).
+       ============================================================ -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Email Confirmed — TENACE</title>
+  <meta name="description" content="Your TENACE account email has been confirmed." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="canonical" href="https://tenace.fit/email-confirmed.html" />
+
+  <!-- Google Fonts — Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Shared stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .confirm-hero { text-align: center; }
+    .confirm-hero .checkmark {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 72px; height: 72px; border-radius: 50%;
+      background: #1E4D3B; color: #fff; font-size: 38px;
+      margin-bottom: 20px;
+    }
+    /* The prose-card underlines links; the CTA button shouldn't inherit that */
+    .confirm-hero .btn-primary { text-decoration: none; color: #fff; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION (identical to index.html)
+       ============================================================ -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a href="/" class="site-nav__logo" aria-label="TENACE home">TENACE</a>
+      <div class="site-nav__actions">
+        <a href="/#signup" class="btn-primary site-nav__cta">Get Notified</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       CONFIRMATION CONTENT
+       ============================================================ -->
+  <main class="prose-page" aria-labelledby="confirmed-title">
+    <article class="prose-card confirm-hero">
+
+      <div class="checkmark" aria-hidden="true">✓</div>
+      <h1 id="confirmed-title">Email confirmed!</h1>
+
+      <p>
+        Your TENACE account is ready. Head back to the app on your phone
+        and sign in — your training data will sync automatically.
+      </p>
+
+      <p>
+        <a class="btn-primary" href="https://apps.apple.com/us/app/tenace-workout-tracker-log/id6760680419"
+           target="_blank" rel="noopener noreferrer">Get TENACE on iOS</a>
+      </p>
+
+      <p>
+        Questions? Reach us at
+        <a href="mailto:contact@tenace.fit">contact@tenace.fit</a>.
+      </p>
+
+    </article>
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER (identical to index.html)
+       ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+
+      <div class="site-footer__brand">
+        <p class="site-footer__brand-name">TENACE</p>
+        <p class="site-footer__tagline">Training for life.</p>
+      </div>
+
+      <nav aria-label="Footer navigation">
+        <p class="site-footer__heading">Pages</p>
+        <ul class="site-footer__links">
+          <li><a href="/">Home</a></li>
+          <li><a href="https://apps.apple.com/us/app/tenace-workout-tracker-log/id6760680419" target="_blank" rel="noopener noreferrer">Download on iOS</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="delete-account.html">Delete Account</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <p class="site-footer__heading">Contact</p>
+        <ul class="site-footer__links">
+          <li><a href="mailto:contact@tenace.fit">contact@tenace.fit</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      &copy; 2026 Gustavo Medeiros Souza. All rights reserved.
+      TENACE and Tenace Training are trademarks of Gustavo Medeiros Souza.
+    </div>
+  </footer>
+
+</body>
+</html>
